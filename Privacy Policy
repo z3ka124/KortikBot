@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Politika Privatnosti | KortikBot</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #1e1e2f;
+      color: #f4f4f4;
+      line-height: 1.6;
+      padding: 40px;
+      max-width: 900px;
+      margin: auto;
+    }
+    h1, h2 {
+      color: #4ecdc4;
+    }
+    a {
+      color: #72f1ff;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    code {
+      background-color: #333;
+      padding: 2px 4px;
+      border-radius: 4px;
+      font-size: 90%;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Politika Privatnosti – KortikBot</h1>
+  <p><strong>Važi od:</strong> 29. jul 2025.</p>
+
+  <p>
+    KortikBot je Discord bot razvijen za sigurnost i asistenciju na Discord serverima. Ova politika privatnosti objašnjava
+    koje podatke bot prikuplja, kako ih koristi i kako štiti vašu privatnost.
+  </p>
+
+  <h2>Koje podatke prikupljamo</h2>
+  <ul>
+    <li>Discord korisnički ID</li>
+    <li>Korisnička imena (za prikaz u logovima)</li>
+    <li>Poruke korisnika (za AI odgovore, moderaciju i detekciju scam poruka)</li>
+  </ul>
+
+  <h2>Kako koristimo podatke</h2>
+  <ul>
+    <li>Za prikaz administratorskih akcija (ban, mute, unmute, itd.)</li>
+    <li>Za automatsku detekciju psovki i scam linkova</li>
+    <li>Za AI odgovore uz pomoć OpenAI</li>
+  </ul>
+
+  <h2>Ko ima pristup podacima</h2>
+  <ul>
+    <li>Samo vlasnik Discord servera i korisnici sa <code>Administrator</code> permisijama</li>
+    <li>Podaci se ne dele sa trećim stranama</li>
+  </ul>
+
+  <h2>Gde se podaci čuvaju</h2>
+  <p>
+    KortikBot <strong>ne čuva podatke trajno</strong>. Svi podaci se obrađuju u realnom vremenu i ne skladište se u bazama podataka.
+  </p>
+
+  <h2>Kontakt</h2>
+  <p>
+    Za pitanja ili prijave, kontaktirajte vlasnika bota na Discord-u: <code>@Sanin</code> (ili direktno ulogom vlasnika servera).
+  </p>
+
+  <hr>
+  <p style="font-size: 0.9em;">© 2025 KortikBot. Sva prava zadržana.</p>
+
+</body>
+</html>
