@@ -3,19 +3,36 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Politika Privatnosti | KortikBot</title>
+  <title>Politika Privatnosti i Uslovi Korišćenja | KortikBot</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background-color: #1e1e2f;
-      color: #f4f4f4;
-      line-height: 1.6;
-      padding: 40px;
-      max-width: 900px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #121229;
+      color: #e0e0e0;
+      line-height: 1.7;
+      padding: 40px 20px;
+      max-width: 1000px;
       margin: auto;
     }
-    h1, h2 {
+    h1, h2, h3 {
       color: #4ecdc4;
+      margin-bottom: 15px;
+    }
+    h1 {
+      font-size: 2.5em;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    h2 {
+      font-size: 1.8em;
+      margin-top: 30px;
+    }
+    p, ul {
+      margin-bottom: 20px;
+    }
+    ul {
+      list-style-type: disc;
+      margin-left: 20px;
     }
     a {
       color: #72f1ff;
@@ -26,54 +43,103 @@
     }
     code {
       background-color: #333;
-      padding: 2px 4px;
+      padding: 2px 6px;
       border-radius: 4px;
       font-size: 90%;
+    }
+    .highlight {
+      color: #ff6b6b;
+      font-weight: bold;
+    }
+    .section-box {
+      background-color: #1e1e35;
+      border-left: 4px solid #4ecdc4;
+      padding: 20px;
+      margin-bottom: 25px;
+      border-radius: 8px;
+    }
+    hr {
+      border: 0;
+      border-top: 1px solid #444;
+      margin: 40px 0;
+    }
+    footer {
+      font-size: 0.9em;
+      text-align: center;
+      color: #888;
+      margin-top: 40px;
     }
   </style>
 </head>
 <body>
 
-  <h1>Politika Privatnosti – KortikBot</h1>
-  <p><strong>Važi od:</strong> 29. jul 2025.</p>
+  <h1>Politika Privatnosti i Uslovi Korišćenja – KortikBot</h1>
+  <p><strong>Važi od:</strong> 29. oktobar 2025.</p>
 
-  <p>
-    KortikBot je Discord bot razvijen za sigurnost i asistenciju na Discord serverima. Ova politika privatnosti objašnjava
-    koje podatke bot prikuplja, kako ih koristi i kako štiti vašu privatnost.
-  </p>
+  <div class="section-box">
+    <h2>O KortikBot-u</h2>
+    <p>
+      KortikBot je multifunkcionalni Discord bot koji kombinuje moderaciju, muziku, AI asistenciju i sigurnosne funkcionalnosti. 
+      Cilj bota je da unapredi iskustvo na Discord serverima kroz automatske akcije, interaktivne komande i prilagodljive filtere.
+    </p>
+  </div>
 
-  <h2>Koje podatke prikupljamo</h2>
-  <ul>
-    <li>Discord korisnički ID</li>
-    <li>Korisnička imena (za prikaz u logovima)</li>
-    <li>Poruke korisnika (za AI odgovore, moderaciju i detekciju scam poruka)</li>
-  </ul>
+  <div class="section-box">
+    <h2>Koje podatke prikupljamo</h2>
+    <ul>
+      <li>Discord korisnički ID i korisnička imena (za logovanje akcija i AI interakciju)</li>
+      <li>Poruke korisnika (za moderaciju, detekciju scam poruka i AI odgovore)</li>
+      <li>Podaci o audio komandi (za muzičke funkcionalnosti, ali <span class="highlight">ne čuvamo sadržaj pesama</span>)</li>
+      <li>Informacije o administrativnim akcijama (ban, mute, unmute, warn)</li>
+    </ul>
+  </div>
 
-  <h2>Kako koristimo podatke</h2>
-  <ul>
-    <li>Za prikaz administratorskih akcija (ban, mute, unmute, itd.)</li>
-    <li>Za automatsku detekciju psovki i scam linkova</li>
-    <li>Za AI odgovore uz pomoć OpenAI</li>
-  </ul>
+  <div class="section-box">
+    <h2>Kako koristimo podatke</h2>
+    <ul>
+      <li>Automatska detekcija neprimerenog sadržaja i scam linkova</li>
+      <li>AI odgovori na korisnička pitanja i pomoć u server interakciji</li>
+      <li>Moderacija i prikaz istorije administrativnih akcija</li>
+      <li>Muzičke komande, uključujući play, pause, skip, autoplay i filtere zvuka</li>
+    </ul>
+  </div>
 
-  <h2>Ko ima pristup podacima</h2>
-  <ul>
-    <li>Samo vlasnik Discord servera i korisnici sa <code>Administrator</code> permisijama</li>
-    <li>Podaci se ne dele sa trećim stranama</li>
-  </ul>
+  <div class="section-box">
+    <h2>Ko ima pristup podacima</h2>
+    <ul>
+      <li>Samo vlasnik Discord servera i korisnici sa <code>Administrator</code> privilegijama</li>
+      <li>Podaci se <span class="highlight">ne dele sa trećim stranama</span></li>
+      <li>Svi AI upiti se procesuiraju real-time i nisu trajno skladišteni</li>
+    </ul>
+  </div>
 
-  <h2>Gde se podaci čuvaju</h2>
-  <p>
-    KortikBot <strong>ne čuva podatke trajno</strong>. Svi podaci se obrađuju u realnom vremenu i ne skladište se u bazama podataka.
-  </p>
+  <div class="section-box">
+    <h2>Gde se podaci čuvaju</h2>
+    <p>
+      KortikBot <strong>ne čuva podatke trajno</strong>. Svi podaci se obrađuju u realnom vremenu i brišu se nakon završetka akcije ili sesije. 
+      Ovo uključuje poruke, audio zahteve i AI upite.
+    </p>
+  </div>
 
-  <h2>Kontakt</h2>
-  <p>
-    Za pitanja ili prijave, kontaktirajte vlasnika bota na Discord-u: <code>@Sanin</code> (ili direktno ulogom vlasnika servera).
-  </p>
+  <div class="section-box">
+    <h2>Funkcionalnosti bota</h2>
+    <ul>
+      <li><strong>Moderacija:</strong> automatski filteri psovki, scam detekcija, ban/mute/unmute komande</li>
+      <li><strong>Muzika:</strong> podrška za play, skip, stop, queue, autopilot i audio filtere</li>
+      <li><strong>AI Asistent:</strong> odgovori na pitanja, pomoć u kreiranju poruka, prijedlozi i interaktivni dijalozi</li>
+      <li><strong>Logovi:</strong> beleženje administrativnih akcija u realnom vremenu</li>
+    </ul>
+  </div>
+
+  <div class="section-box">
+    <h2>Kontakt</h2>
+    <p>
+      Za pitanja, sugestije ili prijave, kontaktirajte vlasnika bota na Discord-u: <code>@Sanin</code> ili direktno ulogom vlasnika servera.
+    </p>
+  </div>
 
   <hr>
-  <p style="font-size: 0.9em;">© 2025 KortikBot. Sva prava zadržana.</p>
+  <footer>© 2025 KortikBot. Sva prava zadržana.</footer>
 
 </body>
 </html>
