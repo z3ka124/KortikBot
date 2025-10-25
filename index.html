@@ -9,7 +9,7 @@
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background-color: #121229;
       color: #e0e0e0;
-      line-height: 1.7;
+      line-height: 1.8;
       padding: 40px 20px;
       max-width: 1000px;
       margin: auto;
@@ -19,20 +19,24 @@
       margin-bottom: 15px;
     }
     h1 {
-      font-size: 2.5em;
+      font-size: 2.8em;
       text-align: center;
-      margin-bottom: 30px;
+      margin-bottom: 40px;
     }
     h2 {
-      font-size: 1.8em;
+      font-size: 2em;
       margin-top: 30px;
+    }
+    h3 {
+      font-size: 1.5em;
+      margin-top: 20px;
     }
     p, ul {
       margin-bottom: 20px;
     }
     ul {
       list-style-type: disc;
-      margin-left: 20px;
+      margin-left: 25px;
     }
     a {
       color: #72f1ff;
@@ -54,20 +58,20 @@
     .section-box {
       background-color: #1e1e35;
       border-left: 4px solid #4ecdc4;
-      padding: 20px;
-      margin-bottom: 25px;
-      border-radius: 8px;
+      padding: 25px;
+      margin-bottom: 30px;
+      border-radius: 10px;
     }
     hr {
       border: 0;
       border-top: 1px solid #444;
-      margin: 40px 0;
+      margin: 50px 0;
     }
     footer {
       font-size: 0.9em;
       text-align: center;
       color: #888;
-      margin-top: 40px;
+      margin-top: 50px;
     }
   </style>
 </head>
@@ -79,28 +83,43 @@
   <div class="section-box">
     <h2>O KortikBot-u</h2>
     <p>
-      KortikBot je multifunkcionalni Discord bot koji kombinuje moderaciju, muziku, AI asistenciju i sigurnosne funkcionalnosti. 
-      Cilj bota je da unapredi iskustvo na Discord serverima kroz automatske akcije, interaktivne komande i prilagodljive filtere.
+      KortikBot je napredni multifunkcionalni Discord bot dizajniran za moderaciju, muziku, AI asistenciju i sigurnosne funkcionalnosti. 
+      Razvijen je sa ciljem da poboljša iskustvo korisnika i administraciju servera kroz automatizovane akcije, interaktivne komande i 
+      prilagodljive filtere. Njegova arhitektura omogućava rad u realnom vremenu bez trajnog skladištenja podataka, čime se maksimizira 
+      privatnost korisnika.
     </p>
+    <p>
+      KortikBot je jedan od boljih dostupnih Discord botova jer kombinuje:
+    </p>
+    <ul>
+      <li><strong>Sigurnost:</strong> detekcija scam linkova, filteri psovki, moderacija koja štiti server od neželjenog sadržaja</li>
+      <li><strong>Efikasnost:</strong> real-time obrada komandi, minimalno opterećenje servera i brze AI odgovore</li>
+      <li><strong>Fleksibilnost:</strong> prilagodljivi filteri, muzika sa naprednim opcijama i integracija sa AI</li>
+      <li><strong>Transparentnost:</strong> sve akcije se loguju i pristupaju samo ovlašćenim korisnicima</li>
+    </ul>
   </div>
 
   <div class="section-box">
     <h2>Koje podatke prikupljamo</h2>
     <ul>
-      <li>Discord korisnički ID i korisnička imena (za logovanje akcija i AI interakciju)</li>
-      <li>Poruke korisnika (za moderaciju, detekciju scam poruka i AI odgovore)</li>
-      <li>Podaci o audio komandi (za muzičke funkcionalnosti, ali <span class="highlight">ne čuvamo sadržaj pesama</span>)</li>
+      <li>Discord korisnički ID i korisnička imena (samo za logovanje i AI interakciju)</li>
+      <li>Poruke korisnika (za moderaciju, AI odgovore i detekciju scam sadržaja)</li>
+      <li>Podaci o audio komandi (za muzičke funkcionalnosti; <span class="highlight">ne čuvamo audio sadržaj</span>)</li>
       <li>Informacije o administrativnim akcijama (ban, mute, unmute, warn)</li>
     </ul>
+    <p>
+      Napominjemo da KortikBot <strong>ne čuva lične podatke trajno</strong> i da se svi podaci obrađuju u realnom vremenu. 
+      Ovo osigurava maksimalnu privatnost i sigurnost korisnika.
+    </p>
   </div>
 
   <div class="section-box">
     <h2>Kako koristimo podatke</h2>
     <ul>
       <li>Automatska detekcija neprimerenog sadržaja i scam linkova</li>
-      <li>AI odgovori na korisnička pitanja i pomoć u server interakciji</li>
-      <li>Moderacija i prikaz istorije administrativnih akcija</li>
-      <li>Muzičke komande, uključujući play, pause, skip, autoplay i filtere zvuka</li>
+      <li>AI odgovori na korisnička pitanja i asistencija u komunikaciji</li>
+      <li>Moderacija i prikaz istorije administrativnih akcija u realnom vremenu</li>
+      <li>Muzičke komande sa opcijama: play, pause, skip, autoplay, queue, filteri zvuka</li>
     </ul>
   </div>
 
@@ -108,27 +127,41 @@
     <h2>Ko ima pristup podacima</h2>
     <ul>
       <li>Samo vlasnik Discord servera i korisnici sa <code>Administrator</code> privilegijama</li>
-      <li>Podaci se <span class="highlight">ne dele sa trećim stranama</span></li>
-      <li>Svi AI upiti se procesuiraju real-time i nisu trajno skladišteni</li>
+      <li>Podaci <span class="highlight">ne dele se sa trećim stranama</span></li>
+      <li>AI upiti se procesuiraju u realnom vremenu i nisu trajno skladišteni</li>
     </ul>
   </div>
 
   <div class="section-box">
     <h2>Gde se podaci čuvaju</h2>
     <p>
-      KortikBot <strong>ne čuva podatke trajno</strong>. Svi podaci se obrađuju u realnom vremenu i brišu se nakon završetka akcije ili sesije. 
-      Ovo uključuje poruke, audio zahteve i AI upite.
+      Svi podaci KortikBot-a se obrađuju u realnom vremenu i brišu se odmah nakon završetka akcije ili sesije. 
+      Ovo uključuje poruke, AI upite i muzičke komande. Ovakav pristup čini bota jednim od najsigurnijih u svojoj kategoriji.
     </p>
   </div>
 
   <div class="section-box">
     <h2>Funkcionalnosti bota</h2>
     <ul>
-      <li><strong>Moderacija:</strong> automatski filteri psovki, scam detekcija, ban/mute/unmute komande</li>
-      <li><strong>Muzika:</strong> podrška za play, skip, stop, queue, autopilot i audio filtere</li>
-      <li><strong>AI Asistent:</strong> odgovori na pitanja, pomoć u kreiranju poruka, prijedlozi i interaktivni dijalozi</li>
+      <li><strong>Moderacija:</strong> filteri psovki, automatska detekcija scam linkova, ban/mute/unmute/warn komande</li>
+      <li><strong>Muzika:</strong> podrška za play, pause, skip, stop, queue, autopilot i napredne audio filtere</li>
+      <li><strong>AI Asistent:</strong> odgovori na pitanja, pomoć u kreiranju poruka, predlozi i interaktivni dijalozi</li>
       <li><strong>Logovi:</strong> beleženje administrativnih akcija u realnom vremenu</li>
+      <li><strong>Sigurnost:</strong> maksimalna zaštita servera, privatnosti i integriteta podataka</li>
     </ul>
+  </div>
+
+  <div class="section-box">
+    <h2>Autorska prava i korišćenje sadržaja</h2>
+    <p>
+      Sav kod, funkcionalnosti i dizajn KortikBot-a su vlasništvo autora bota (<code>@Sanin</code>) i zaštićeni su autorskim pravima. 
+      Korišćenje bota je dozvoljeno u skladu sa ovom politikom i sa odobrenjem autora. 
+      Kopiranje, distribucija ili korišćenje koda u druge svrhe bez saglasnosti autora je zabranjeno.
+    </p>
+    <p>
+      Napomena: objavljivanjem ove stranice i korišćenjem bota, vi ne „čuvate autorska prava“ – autorska prava pripadaju kreatoru bota. 
+      Vi samo koristite bota u skladu sa licencom i pravilima. Ako želiš da eksplicitno definišeš licence (npr. MIT, GPL), to možeš dodati u posebnu sekciju.
+    </p>
   </div>
 
   <div class="section-box">
