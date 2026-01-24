@@ -3,26 +3,29 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Pravni Centar | KortikBot</title>
-  <style>
+  
+  <title>Kortik Aegis | Pravni Centar</title>
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="KortikBot">
+  <meta property="og:title" content="Kortik Aegis | Pravni Centar">
+  <meta property="og:description" content="Zvanična dokumentacija, uslovi korišćenja i politika privatnosti za KortikBota. Sigurnost, Muzika i Moderacija.">
+  <meta property="og:url" content="https://z3ka124.github.io/KortikBot">
+  <meta property="og:image" content="https://i.imgur.com/TvojLogoLink.png">
+  <meta name="theme-color" content="#00f2ea"> <style>
     :root {
-      --primary-color: #00f2ea; /* Neon cijan */
-      --secondary-color: #ff0055; /* Neon roze za akcente */
+      --primary-color: #00f2ea;
+      --secondary-color: #ff0055;
       --bg-dark: #0f172a;
       --glass-bg: rgba(20, 25, 40, 0.85);
       --text-main: #e2e8f0;
       --text-muted: #94a3b8;
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
       font-family: 'Inter', 'Segoe UI', Tahoma, sans-serif;
-      /* Zameni URL svojom slikom. Stavio sam i gradient ako slika ne učita */
       background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%), url('565a8d4e-152e-4440-a6fe-4525697170e5.png');
       background-size: cover;
       background-attachment: fixed;
@@ -35,7 +38,6 @@
       padding: 40px 20px;
     }
 
-    /* Glavni Kontejner */
     .container {
       width: 100%;
       max-width: 900px;
@@ -47,15 +49,66 @@
       box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
       overflow: hidden;
       animation: fadeIn 0.8s ease-out;
+      position: relative;
     }
 
-    /* Zaglavlje */
-    header {
-      text-align: center;
-      padding: 40px 20px 20px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    /* JEZIK SELECTOR (Gornji desni ugao) */
+    .lang-switch {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      z-index: 100;
     }
 
+    .lang-btn {
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: #fff;
+      padding: 8px 15px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .lang-btn:hover {
+      background: var(--primary-color);
+      color: #000;
+    }
+
+    .lang-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      right: 0;
+      background: #1e293b;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 10px;
+      margin-top: 5px;
+      overflow: hidden;
+      min-width: 120px;
+    }
+
+    .lang-menu.show { display: block; }
+
+    .lang-option {
+      padding: 10px 15px;
+      color: #ccc;
+      cursor: pointer;
+      display: block;
+      transition: 0.2s;
+    }
+
+    .lang-option:hover {
+      background: rgba(255,255,255,0.1);
+      color: #fff;
+    }
+
+    /* Ostali stilovi (isti kao pre) */
+    header { text-align: center; padding: 40px 20px 20px; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
     h1 {
       font-size: 2.5rem;
       font-weight: 800;
@@ -66,257 +119,332 @@
       margin-bottom: 10px;
       text-transform: uppercase;
     }
+    .subtitle { color: var(--text-muted); font-size: 0.95rem; }
 
-    .subtitle {
-      color: var(--text-muted);
-      font-size: 0.95rem;
-    }
-
-    /* Tab Navigacija (Dva prozora) */
-    .tabs {
-      display: flex;
-      background: rgba(0, 0, 0, 0.3);
-    }
-
+    .tabs { display: flex; background: rgba(0, 0, 0, 0.3); }
     .tab-btn {
-      flex: 1;
-      padding: 20px;
-      background: transparent;
-      border: none;
-      color: var(--text-muted);
-      font-size: 1.1rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      border-bottom: 3px solid transparent;
+      flex: 1; padding: 20px; background: transparent; border: none;
+      color: var(--text-muted); font-size: 1.1rem; font-weight: 600;
+      cursor: pointer; transition: all 0.3s ease; border-bottom: 3px solid transparent;
     }
-
-    .tab-btn:hover {
-      color: #fff;
-      background: rgba(255, 255, 255, 0.05);
-    }
-
+    .tab-btn:hover { color: #fff; background: rgba(255, 255, 255, 0.05); }
     .tab-btn.active {
-      color: var(--primary-color);
-      border-bottom: 3px solid var(--primary-color);
+      color: var(--primary-color); border-bottom: 3px solid var(--primary-color);
       background: rgba(0, 242, 234, 0.05);
     }
 
-    /* Sadržaj */
-    .content-area {
-      padding: 40px;
-    }
-
-    .tab-content {
-      display: none; /* Sakriveno po defaultu */
-      animation: slideUp 0.4s ease-out;
-    }
-
-    .tab-content.active {
-      display: block; /* Prikazano ako je aktivno */
-    }
+    .content-area { padding: 40px; }
+    .tab-content { display: none; animation: slideUp 0.4s ease-out; }
+    .tab-content.active { display: block; }
 
     h2 {
-      color: var(--primary-color);
-      font-size: 1.5rem;
-      margin-bottom: 15px;
-      margin-top: 30px;
-      border-left: 4px solid var(--primary-color);
-      padding-left: 15px;
+      color: var(--primary-color); font-size: 1.5rem; margin-bottom: 15px;
+      margin-top: 30px; border-left: 4px solid var(--primary-color); padding-left: 15px;
     }
+    h2:first-child { margin-top: 0; }
 
-    h2:first-child {
-      margin-top: 0;
-    }
+    p, ul { margin-bottom: 1.2rem; color: #cbd5e1; line-height: 1.7; }
+    ul { list-style: none; padding-left: 10px; }
+    li { position: relative; padding-left: 25px; margin-bottom: 8px; }
+    li::before { content: "▹"; color: var(--primary-color); position: absolute; left: 0; font-weight: bold; }
 
-    p, ul {
-      margin-bottom: 1.2rem;
-      color: #cbd5e1;
-      line-height: 1.7;
-    }
+    .highlight { color: #fff; font-weight: 600; background: rgba(0, 242, 234, 0.1); padding: 2px 6px; border-radius: 4px; }
+    code { background: #1e293b; padding: 3px 6px; border-radius: 4px; font-family: 'Courier New', monospace; color: var(--secondary-color); font-size: 0.9em; }
 
-    ul {
-      list-style: none;
-      padding-left: 10px;
-    }
+    footer { text-align: center; padding: 20px; background: rgba(0, 0, 0, 0.2); font-size: 0.85rem; color: var(--text-muted); border-top: 1px solid rgba(255, 255, 255, 0.05); }
 
-    li {
-      position: relative;
-      padding-left: 25px;
-      margin-bottom: 8px;
-    }
-
-    li::before {
-      content: "▹";
-      color: var(--primary-color);
-      position: absolute;
-      left: 0;
-      font-weight: bold;
-    }
-
-    .highlight {
-      color: #fff;
-      font-weight: 600;
-      background: rgba(0, 242, 234, 0.1);
-      padding: 2px 6px;
-      border-radius: 4px;
-    }
-
-    code {
-      background: #1e293b;
-      padding: 3px 6px;
-      border-radius: 4px;
-      font-family: 'Courier New', monospace;
-      color: var(--secondary-color);
-      font-size: 0.9em;
-    }
-
-    /* Footer */
-    footer {
-      text-align: center;
-      padding: 20px;
-      background: rgba(0, 0, 0, 0.2);
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      border-top: 1px solid rgba(255, 255, 255, 0.05);
-    }
-
-    /* Animacije */
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes slideUp {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* Responsive */
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes slideUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    
     @media (max-width: 600px) {
       h1 { font-size: 1.8rem; }
       .content-area { padding: 25px; }
       .tab-btn { font-size: 0.9rem; padding: 15px; }
     }
+
+    /* Helper klase za jezike */
+    .lang-en { display: none; }
   </style>
 </head>
 <body>
 
   <div class="container">
+    
+    <div class="lang-switch">
+      <div class="lang-btn" onclick="toggleLangMenu()">
+        🌐 <span id="currentLangLabel">Srpski</span> ▼
+      </div>
+      <div class="lang-menu" id="langMenu">
+        <div class="lang-option" onclick="setLanguage('sr')">🇷🇸 Srpski</div>
+        <div class="lang-option" onclick="setLanguage('en')">🇬🇧 English</div>
+      </div>
+    </div>
+
     <header>
       <h1>🛡️ KortikBot</h1>
-      <div class="subtitle">Dokumentacija i Pravni Centar</div>
+      <div class="subtitle">
+        <span class="lang-sr">Dokumentacija i Pravni Centar</span>
+        <span class="lang-en">Documentation & Legal Center</span>
+      </div>
     </header>
 
     <div class="tabs">
-      <button class="tab-btn active" onclick="openTab('privacy')">Politika Privatnosti</button>
-      <button class="tab-btn" onclick="openTab('terms')">Uslovi Korišćenja</button>
+      <button class="tab-btn active" onclick="openTab('privacy')">
+        <span class="lang-sr">Politika Privatnosti</span>
+        <span class="lang-en">Privacy Policy</span>
+      </button>
+      <button class="tab-btn" onclick="openTab('terms')">
+        <span class="lang-sr">Uslovi Korišćenja</span>
+        <span class="lang-en">Terms of Service</span>
+      </button>
     </div>
 
     <div class="content-area">
       
       <div id="privacy" class="tab-content active">
-        <h2>Uvod i Prikupljanje Podataka</h2>
+        <h2>
+          <span class="lang-sr">Uvod i Prikupljanje Podataka</span>
+          <span class="lang-en">Introduction & Data Collection</span>
+        </h2>
         <p>
-          <strong>KortikBot</strong> je napredni Discord bot dizajniran za sigurnost, muziku i moderaciju. 
-          Naš prioritet je vaša privatnost. Za razliku od mnogih drugih botova, KortikBot radi na principu 
-          <span class="highlight">obrade u realnom vremenu</span> (RAM memorija) i ne čuva trajno vaše poruke na disku.
+          <span class="lang-sr">
+            <strong>KortikBot</strong> je napredni Discord bot dizajniran za sigurnost, muziku i moderaciju. 
+            Naš prioritet je vaša privatnost. Za razliku od mnogih drugih botova, KortikBot radi na principu 
+            <span class="highlight">obrade u realnom vremenu</span> (RAM memorija) i ne čuva trajno vaše poruke na disku.
+          </span>
+          <span class="lang-en">
+            <strong>KortikBot</strong> is an advanced Discord bot designed for security, music, and moderation.
+            Our priority is your privacy. Unlike many other bots, KortikBot operates on a 
+            <span class="highlight">real-time processing</span> principle (RAM memory) and does not permanently store your messages on disk.
+          </span>
         </p>
 
-        <h2>Koje podatke obrađujemo?</h2>
+        <h2>
+          <span class="lang-sr">Koje podatke obrađujemo?</span>
+          <span class="lang-en">What data do we process?</span>
+        </h2>
         <ul>
-          <li><strong>ID Korisnika:</strong> (Discord User ID) - koristi se isključivo za izvršavanje komandi i logove.</li>
-          <li><strong>Sadržaj Poruka:</strong> Privremeno se skenira radi moderacije (anti-spam, psovke, scam linkovi) i odmah briše iz memorije.</li>
-          <li><strong>Audio Upiti:</strong> Nazivi pesama ili linkovi koje unosite za puštanje muzike. Ne snimamo vaš glas.</li>
-          <li><strong>Logovi Moderacije:</strong> Informacije o kaznama (ban, kick, mute) se čuvaju radi funkcionisanja servera.</li>
+          <li>
+            <span class="lang-sr"><strong>ID Korisnika:</strong> (Discord User ID) - koristi se isključivo za izvršavanje komandi i logove.</span>
+            <span class="lang-en"><strong>User ID:</strong> (Discord User ID) - used exclusively for command execution and logs.</span>
+          </li>
+          <li>
+            <span class="lang-sr"><strong>Sadržaj Poruka:</strong> Privremeno se skenira radi moderacije (anti-spam, psovke, scam linkovi) i odmah briše iz memorije.</span>
+            <span class="lang-en"><strong>Message Content:</strong> Temporarily scanned for moderation (anti-spam, profanity, scam links) and immediately deleted from memory.</span>
+          </li>
+          <li>
+            <span class="lang-sr"><strong>Audio Upiti:</strong> Nazivi pesama ili linkovi koje unosite za puštanje muzike. Ne snimamo vaš glas.</span>
+            <span class="lang-en"><strong>Audio Queries:</strong> Song titles or links you enter to play music. We do not record your voice.</span>
+          </li>
+          <li>
+            <span class="lang-sr"><strong>Logovi Moderacije:</strong> Informacije o kaznama (ban, kick, mute) se čuvaju radi funkcionisanja servera.</span>
+            <span class="lang-en"><strong>Moderation Logs:</strong> Information about punishments (ban, kick, mute) is stored for server functionality.</span>
+          </li>
         </ul>
 
-        <h2>Gde idu vaši podaci?</h2>
+        <h2>
+          <span class="lang-sr">Gde idu vaši podaci?</span>
+          <span class="lang-en">Where does your data go?</span>
+        </h2>
         <p>
-          Nigde. Vaši podaci se <strong>NE dele</strong> sa trećim stranama, oglašivačima niti drugim kompanijama.
-          Pristup logovima imaju isključivo:
+          <span class="lang-sr">
+            Nigde. Vaši podaci se <strong>NE dele</strong> sa trećim stranama, oglašivačima niti drugim kompanijama.
+            Pristup logovima imaju isključivo:
+          </span>
+          <span class="lang-en">
+            Nowhere. Your data is <strong>NOT shared</strong> with third parties, advertisers, or other companies.
+            Access to logs is granted exclusively to:
+          </span>
         </p>
         <ul>
-          <li>Vlasnik Discord servera na kojem se bot nalazi.</li>
-          <li>Administratori tog servera (prema dozvolama koje im je vlasnik dao).</li>
-          <li>Glavni developer bota (samo u svrhu debagovanja kritičnih grešaka).</li>
+          <li>
+            <span class="lang-sr">Vlasnik Discord servera na kojem se bot nalazi.</span>
+            <span class="lang-en">The owner of the Discord server where the bot resides.</span>
+          </li>
+          <li>
+            <span class="lang-sr">Administratori tog servera (prema dozvolama koje im je vlasnik dao).</span>
+            <span class="lang-en">Administrators of that server (according to permissions granted by the owner).</span>
+          </li>
+          <li>
+            <span class="lang-sr">Glavni developer bota (samo u svrhu debagovanja kritičnih grešaka).</span>
+            <span class="lang-en">The main bot developer (only for debugging critical errors).</span>
+          </li>
         </ul>
 
-        <h2>Sigurnost</h2>
+        <h2>
+          <span class="lang-sr">Sigurnost</span>
+          <span class="lang-en">Security</span>
+        </h2>
         <p>
-          Svi podaci se procesuiraju putem enkriptovane konekcije sa Discord API-jem. 
-          Bot koristi napredne algoritme za zaštitu od zloupotrebe.
+          <span class="lang-sr">
+            Svi podaci se procesuiraju putem enkriptovane konekcije sa Discord API-jem. 
+            Bot koristi napredne algoritme za zaštitu od zloupotrebe.
+          </span>
+          <span class="lang-en">
+            All data is processed via an encrypted connection with the Discord API.
+            The bot uses advanced algorithms to protect against abuse.
+          </span>
         </p>
       </div>
 
       <div id="terms" class="tab-content">
-        <h2>1. Prihvatanje Uslova</h2>
+        <h2>
+          <span class="lang-sr">1. Prihvatanje Uslova</span>
+          <span class="lang-en">1. Acceptance of Terms</span>
+        </h2>
         <p>
-          Pozivanjem <strong>KortikBota</strong> na vaš server ili korišćenjem njegovih komandi, automatski prihvatate ove Uslove Korišćenja, 
-          kao i gore navedenu Politiku Privatnosti. Ako se ne slažete sa bilo kojim delom, molimo vas da uklonite bota sa servera.
+          <span class="lang-sr">
+            Pozivanjem <strong>KortikBota</strong> na vaš server ili korišćenjem njegovih komandi, automatski prihvatate ove Uslove Korišćenja, 
+            kao i gore navedenu Politiku Privatnosti. Ako se ne slažete sa bilo kojim delom, molimo vas da uklonite bota sa servera.
+          </span>
+          <span class="lang-en">
+            By inviting <strong>KortikBot</strong> to your server or using its commands, you automatically accept these Terms of Service,
+            as well as the Privacy Policy above. If you do not agree with any part, please remove the bot from the server.
+          </span>
         </p>
 
-        <h2>2. Licenca za Korišćenje</h2>
+        <h2>
+          <span class="lang-sr">2. Licenca za Korišćenje</span>
+          <span class="lang-en">2. Usage License</span>
+        </h2>
         <p>
-          KortikBot je besplatan za korišćenje (osim Premium funkcija ako su aktivirane). 
-          Dozvoljeno vam je korišćenje bota na neograničenom broju servera pod uslovom da:
+          <span class="lang-sr">
+            KortikBot je besplatan za korišćenje (osim Premium funkcija ako su aktivirane). 
+            Dozvoljeno vam je korišćenje bota na neograničenom broju servera pod uslovom da:
+          </span>
+          <span class="lang-en">
+            KortikBot is free to use (unless Premium features are activated).
+            You are permitted to use the bot on an unlimited number of servers provided that:
+          </span>
         </p>
         <ul>
-          <li>Ne pokušavate da dekompajlirate, kopirate ili ukradete izvorni kod bota.</li>
-          <li>Ne koristite bota za ilegalne aktivnosti, spamovanje ili uznemiravanje drugih korisnika.</li>
-          <li>Ne pokušavate da srušite bota (DDoS, namerno izazivanje grešaka).</li>
+          <li>
+            <span class="lang-sr">Ne pokušavate da dekompajlirate, kopirate ili ukradete izvorni kod bota.</span>
+            <span class="lang-en">You do not attempt to decompile, copy, or steal the bot's source code.</span>
+          </li>
+          <li>
+            <span class="lang-sr">Ne koristite bota za ilegalne aktivnosti, spamovanje ili uznemiravanje drugih korisnika.</span>
+            <span class="lang-en">You do not use the bot for illegal activities, spamming, or harassing other users.</span>
+          </li>
+          <li>
+            <span class="lang-sr">Ne pokušavate da srušite bota (DDoS, namerno izazivanje grešaka).</span>
+            <span class="lang-en">You do not attempt to crash the bot (DDoS, intentional error triggering).</span>
+          </li>
         </ul>
 
-        <h2>3. Odricanje od Odgovornosti (Disclaimer)</h2>
+        <h2>
+          <span class="lang-sr">3. Odricanje od Odgovornosti</span>
+          <span class="lang-en">3. Disclaimer</span>
+        </h2>
         <p>
-          Bot se pruža u viđenom stanju ("as is"). Iako se tim <code>Kortik Aegis</code> trudi da osigura 99.9% uptime i stabilnost:
+          <span class="lang-sr">
+            Bot se pruža u viđenom stanju ("as is"). Iako se tim <code>Kortik Aegis</code> trudi da osigura 99.9% uptime i stabilnost:
+          </span>
+          <span class="lang-en">
+            The bot is provided "as is". Although the <code>Kortik Aegis</code> team strives to ensure 99.9% uptime and stability:
+          </span>
         </p>
         <ul>
-          <li>Ne garantujemo da će bot raditi bez prekida ili grešaka u svakom trenutku.</li>
-          <li>Nismo odgovorni za gubitak podataka na vašem serveru uzrokovan pogrešnim korišćenjem komandi (npr. pogrešno podešen <code>!ban</code>).</li>
-          <li>Nismo odgovorni za sadržaj pesama koje korisnici puštaju putem muzičkog modula.</li>
+          <li>
+            <span class="lang-sr">Ne garantujemo da će bot raditi bez prekida ili grešaka u svakom trenutku.</span>
+            <span class="lang-en">We do not guarantee that the bot will work without interruptions or errors at all times.</span>
+          </li>
+          <li>
+            <span class="lang-sr">Nismo odgovorni za gubitak podataka na vašem serveru uzrokovan pogrešnim korišćenjem komandi (npr. pogrešno podešen <code>!ban</code>).</span>
+            <span class="lang-en">We are not liable for data loss on your server caused by incorrect command usage (e.g., misconfigured <code>!ban</code>).</span>
+          </li>
+          <li>
+            <span class="lang-sr">Nismo odgovorni za sadržaj pesama koje korisnici puštaju putem muzičkog modula.</span>
+            <span class="lang-en">We are not responsible for the content of songs users play via the music module.</span>
+          </li>
         </ul>
 
-        <h2>4. Autorska Prava</h2>
+        <h2>
+          <span class="lang-sr">4. Autorska Prava</span>
+          <span class="lang-en">4. Copyright</span>
+        </h2>
         <p>
-          Sve intelektualne svojine, uključujući ime, logo, kod i brend <strong>KortikBot</strong> pripadaju developeru (<code>@Sanin</code> / Kortik Aegis Team).
-          Nije dozvoljeno predstavljati se kao autor bota ili prodavati pristup botu trećim licima.
+          <span class="lang-sr">
+            Sve intelektualne svojine, uključujući ime, logo, kod i brend <strong>KortikBot</strong> pripadaju developeru (<code>@sanin_1cc</code> / Kortik Aegis Team).
+            Nije dozvoljeno predstavljati se kao autor bota ili prodavati pristup botu trećim licima.
+          </span>
+          <span class="lang-en">
+            All intellectual property, including the name, logo, code, and <strong>KortikBot</strong> brand, belongs to the developer (<code>@sanin_1cc</code> / Kortik Aegis Team).
+            You are not allowed to present yourself as the author or sell bot access to third parties.
+          </span>
         </p>
 
-        <h2>5. Izmene Uslova</h2>
+        <h2>
+          <span class="lang-sr">5. Izmene Uslova</span>
+          <span class="lang-en">5. Changes to Terms</span>
+        </h2>
         <p>
-          Zadržavamo pravo da promenimo ove uslove u bilo kom trenutku. Značajne promene će biti objavljene na zvaničnom Discord serveru za podršku.
+          <span class="lang-sr">
+            Zadržavamo pravo da promenimo ove uslove u bilo kom trenutku. Značajne promene će biti objavljene na zvaničnom Discord serveru za podršku.
+          </span>
+          <span class="lang-en">
+            We reserve the right to change these terms at any time. Significant changes will be posted on the official Discord support server.
+          </span>
         </p>
       </div>
 
     </div>
 
     <footer>
-      <p>&copy; 2025 Kortik Aegis Team. Developed by <code>@Sanin</code>.</p>
+      <p>&copy; 2026 Kortik Aegis Team.
       <p style="margin-top:5px; font-size: 0.75rem; opacity: 0.6;">Not affiliated with Discord Inc.</p>
     </footer>
   </div>
 
   <script>
+    // --- TAB LOGIC ---
     function openTab(tabName) {
-      // 1. Sakrij sve sadržaje
       var contents = document.getElementsByClassName("tab-content");
       for (var i = 0; i < contents.length; i++) {
         contents[i].classList.remove("active");
       }
-
-      // 2. Ukloni aktivnu klasu sa svih dugmadi
       var buttons = document.getElementsByClassName("tab-btn");
       for (var i = 0; i < buttons.length; i++) {
         buttons[i].classList.remove("active");
       }
-
-      // 3. Prikaži željeni tab i označi dugme
       document.getElementById(tabName).classList.add("active");
-      
-      // Pronađi dugme koje je kliknuto (event.currentTarget ne radi uvek u inline JS, ovo je workaround)
-      var clickedBtn = event.target;
-      clickedBtn.classList.add("active");
+      event.currentTarget.classList.add("active");
+    }
+
+    // --- LANGUAGE LOGIC ---
+    function toggleLangMenu() {
+      document.getElementById("langMenu").classList.toggle("show");
+    }
+
+    // Zatvori meni ako se klikne van njega
+    window.onclick = function(event) {
+      if (!event.target.matches('.lang-btn') && !event.target.matches('.lang-btn *')) {
+        var dropdowns = document.getElementsByClassName("lang-menu");
+        for (var i = 0; i < dropdowns.length; i++) {
+          var openDropdown = dropdowns[i];
+          if (openDropdown.classList.contains('show')) {
+            openDropdown.classList.remove('show');
+          }
+        }
+      }
+    }
+
+    function setLanguage(lang) {
+      var srElems = document.getElementsByClassName("lang-sr");
+      var enElems = document.getElementsByClassName("lang-en");
+      var label = document.getElementById("currentLangLabel");
+
+      if (lang === 'en') {
+        // Prikazi Engleski, Sakrij Srpski
+        for(var i=0; i<srElems.length; i++) srElems[i].style.display = "none";
+        for(var i=0; i<enElems.length; i++) enElems[i].style.display = "inline"; // ili block, zavisno od elementa
+        label.innerText = "English";
+      } else {
+        // Prikazi Srpski, Sakrij Engleski
+        for(var i=0; i<srElems.length; i++) srElems[i].style.display = "inline";
+        for(var i=0; i<enElems.length; i++) enElems[i].style.display = "none";
+        label.innerText = "Srpski";
+      }
     }
   </script>
 
